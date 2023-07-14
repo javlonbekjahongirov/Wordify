@@ -1,0 +1,27 @@
+<div class="row mt-5">
+    <div class="col-md-12 text-center">
+        <nav aria-label="Page navigation" class="text-center">
+            <ul class="pagination">
+                {% if object_list.has_previous %}
+                    <li class="page-item"><a class="page-link"
+                                             href="?page={{ object_list.previous_page_number }}#site-section py-sm">&lt;</a>
+                    </li>
+                {% endif %}
+
+                {% for i in object_list.paginator.page_range %}
+                    {% if i == object_list.number %}
+                        <li class="active"><a href="">{{ i }}</a></li>
+                    {% else %}
+                        <li class=""><a href="?page={{ i }}#site-section py-sm">{{ i }}</a></li>
+                    {% endif %}
+
+                {% endfor %}
+                {% if object_list.has_next %}
+                    <li class="page-item"><a class="page-link"
+                                             href="?page={{ object_list.next_page_number }}#site-section py-sm">&gt;</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>
